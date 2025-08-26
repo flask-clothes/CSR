@@ -14,7 +14,7 @@ async function main(){
     myData.forEach(e => {
         myCard += `<p>${e.name}</p>
          <p>${e.price}</p>
-         <a href="/ssr/clothe/${e.id}">
+         <a href="/clothe/${e.id}">
          <button class="card--button">Comprar</button>
          </a>
          `
@@ -26,8 +26,9 @@ async function main(){
 
     });
 }
+main()
 
-let myOtherCard = '<div class="card">'
+let myOtherCard = '<div class="card--see--detail">'
 let otherFatherElement = document.getElementById('clothe')
 
 const fetchingOtherData = async (i) => {
@@ -39,16 +40,25 @@ const fetchingOtherData = async (i) => {
 async function notmain(i){
     const id = parseInt(location.pathname.split("/")[2])
 
-    console.log("Hi")
-    if(id != NaN){
+    console.log("ID: ", id,id!=NaN)
+    
+    if(!isNaN(id)){
     let myData =  await fetchingOtherData(id)
     console.log(myData)
-    myData.forEach(e => {
-        myOtherCard += `<p>${e.name}</p>
-         <p>${e.price}</p>
-         <a href="/clothe/${e.id}">
-         <button class="card--button">Comprar</button>
-         </a>
+
+    myOtherCard += `
+        <div class="card--see--detail--img--space">
+            <div class="card--img">
+                <img src="../../${myData.imgurl}"></img>
+            </div>
+        </div>
+        <div class="card--see--detail--content">
+        <h1>${myData.name}</h1>
+        <p>${myData.price}</p>
+        <a href="/clothe/${myData.id}">
+        <button class="card--button">Comprar</button>
+        </a>
+        </div>
          `
         myOtherCard+= "</div>"
         
@@ -56,7 +66,7 @@ async function notmain(i){
         otherFatherElement.innerHTML += myOtherCard
         myOtherCard = '<div class="card">'
 
-    });}
+    ;}
 }
 
 
