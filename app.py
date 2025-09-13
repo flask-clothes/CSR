@@ -29,11 +29,11 @@ class Clothe:
         }
 
 
-clothes = [Clothe(1, "NikeM4", 50, "sport", "assets/nikem4.jpg"), Clothe(
-    2, "Zara", 200, "expensive", "null"), Clothe(3, "North Ocean", 150, "cold", "null")]
+clothes = [Clothe(1, "Nike Shoes", 50, "sport", "/static/assets/products/green_nike_shoes.jpeg"), Clothe(
+    2, "Moletom Cinza", 200, "expensive", "/static/assets/products/grey.jpeg"), Clothe(3, "Camisa de compressão Nike", 150, "cold", "/static/assets/products/nike_compression_tshirt.jpeg")]
 
 
-@app.route("/ssr")
+@app.route("/csr")
 def home():
     return render_template('clothes.html', clothes=clothes)
 

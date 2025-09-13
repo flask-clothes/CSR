@@ -12,12 +12,18 @@ async function main(){
     let myData =  await fetchingData()
     console.log(myData)
     myData.forEach(e => {
-        myCard += `<p>${e.name}</p>
-         <p>${e.price}</p>
-         <a href="/clothe/${e.id}">
-         <button class="card--button">Comprar</button>
-         </a>
-         `
+        myCard += `
+        <div class="card--img--space">
+            <img src="${e.imgurl}"></img>
+        </div>
+        <div class="card--content">
+        <p>${e.name}</p>
+        <p>${e.price}</p>
+        <a href="/clothe/${e.id}">
+        <button class="card--button">Comprar</button>
+        </a>
+        </div>
+        `
         myCard+= "</div>"
         
         console.log("hi again")
@@ -49,7 +55,7 @@ async function notmain(i){
     myOtherCard += `
         <div class="card--see--detail--img--space">
             <div class="card--img">
-                <img src="../../${myData.imgurl}"></img>
+                <img src="${myData.imgurl}"></img>
             </div>
         </div>
         <div class="card--see--detail--content">
