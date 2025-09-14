@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrapper">
+<div class="login" id="clothe">
+    <form action="" id="login--form" method="post">
+        <h1>Login</h1>
+        <input type="text" name="name">
+        <input type="password" name="password">
+        <button type="submit">Entrar</button>
+        
+    </form>
+    {% if msg %}
+    <p>{{msg}}</p>
+    {% endif %}
+    
+</div>
+</div>
+
+{% endblock %}

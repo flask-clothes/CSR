@@ -1,7 +1,14 @@
-from flask import Flask, render_template, url_for, request, make_response, redirect, jsonify
+from flask import Flask, render_template, url_for, request, make_response, redirect, jsonify, abort
 
 
 app = Flask(__name__)
+
+myToken = "myToken"
+
+users = {
+    'joao': '2708',
+    'vih': '0305'
+}
 
 
 class Clothe:
@@ -33,9 +40,42 @@ clothes = [Clothe(1, "Nike Shoes", 50, "sport", "/static/assets/products/green_n
     2, "Moletom Cinza", 200, "expensive", "/static/assets/products/grey.jpeg"), Clothe(3, "Camisa de compressão Nike", 150, "cold", "/static/assets/products/nike_compression_tshirt.jpeg")]
 
 
+@app.route("/")
+def default():
+    return redirect(url_for("login"))
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+
+    method = request.method
+    print(method)
+    if method == "POST":
+        name = request.form.get("name")
+        password = request.form.get("password")
+        print(password, name)
+        if ((name in users.keys()) and password == users[name]):
+            resp = make_response(redirect(url_for("home")))
+            resp.set_cookie("token", myToken, 60)
+            return resp
+        msg = "Ops, você errou algum campo, tente novamente"
+
+        return render_template("login.html", msg=msg)
+
+    return render_template("login.html")
+
+
 @app.route("/csr")
 def home():
-    return render_template('clothes.html', clothes=clothes)
+    print("Token: ", request.cookies.get("token"))
+    if request.cookies.get("token") == myToken:
+        return render_template('clothes.html', clothes=clothes)
+    abort(403)
+
+
+@app.errorhandler(403)
+def unathorizedPage(error):
+    return render_template("403.html")
 
 
 @app.route("/getclothes")
@@ -47,6 +87,14 @@ def getClothes():
 @app.route("/clothe/<id>")
 def clothe(id):
     return render_template("clothe.html")
+
+
+@app.route("/deletecookies")
+def deletingCookies():
+    response = make_response("Deleting")
+    response.delete_cookie("user")
+    response.delete_cookie("token")
+    return response
 
 
 @app.route("/ssr/clothe/<id>")

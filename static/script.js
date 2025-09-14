@@ -1,6 +1,8 @@
 let myCard = '<div class="card">'
 let fatherElement = document.getElementById('clothes')
 
+
+
 const fetchingData = async () => {
     const res = await fetch("/getclothes")
     const data = res.json()
@@ -17,8 +19,8 @@ async function main(){
             <img src="${e.imgurl}"></img>
         </div>
         <div class="card--content">
-        <p>${e.name}</p>
-        <p>${e.price}</p>
+        <p class="name">${e.name}</p>
+        <p class="price">R$ ${e.price}</p>
         <a href="/clothe/${e.id}">
         <button class="card--button">Comprar</button>
         </a>
