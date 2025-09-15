@@ -10,6 +10,8 @@ users = {
     'vih': '0305'
 }
 
+ctgs = ["sport", "cold", "expensive", "all"]
+
 
 class Clothe:
 
@@ -36,8 +38,19 @@ class Clothe:
         }
 
 
-clothes = [Clothe(1, "Nike Shoes", 50, "sport", "/static/assets/products/green_nike_shoes.jpeg"), Clothe(
-    2, "Moletom Cinza", 200, "expensive", "/static/assets/products/grey.jpeg"), Clothe(3, "Camisa de compressão Nike", 150, "cold", "/static/assets/products/nike_compression_tshirt.jpeg")]
+clothes = [
+    Clothe(2, "Moletom Cinza", 200, "expensive",
+           "/static/assets/products/grey.jpeg"),
+    Clothe(1, "Nike Shoes", 50, "sport",
+           "/static/assets/products/green_nike_shoes.jpeg"),
+    Clothe(3, "Camisa de compressão Nike", 150, "sport",
+           "/static/assets/products/nike_compression_tshirt.jpeg"),
+    Clothe(4, "Calça Jogger da Puma", 100, "sport",
+           "/static/assets/products/puma_jogger.jpeg"),
+    Clothe(5, "Camisa do Corinthians", 100, "cold",
+           "/static/assets/products/corinthians_tshirt.png"),
+    Clothe(6, "Strap", 100, "sport", "/static/assets/products/strap.jpeg")
+]
 
 
 @app.route("/")
@@ -56,7 +69,7 @@ def login():
         print(password, name)
         if ((name in users.keys()) and password == users[name]):
             resp = make_response(redirect(url_for("home")))
-            resp.set_cookie("token", myToken, 60)
+            resp.set_cookie("token", myToken, 60*60)
             return resp
         msg = "Ops, você errou algum campo, tente novamente"
 
@@ -80,13 +93,33 @@ def unathorizedPage(error):
 
 @app.route("/getclothes")
 def getClothes():
+
     clothesDict = [c.toDict() for c in clothes]
+    print(clothesDict)
     return jsonify(clothesDict)
+
+
+@app.route("/getfilteredclothes/<ctg>", methods=["POST", "GET"])
+def getFilteredClothes(ctg):
+    filteredClothes = []
+    for c in clothes:
+        if c.ctg == ctg:
+            filteredClothes.append(c)
+    if ctg == "all":
+        filteredClothes = clothes
+    filteredClothesDict = [c.toDict() for c in filteredClothes]
+    return jsonify(filteredClothesDict)
 
 
 @app.route("/clothe/<id>")
 def clothe(id):
     return render_template("clothe.html")
+
+
+@app.route("/getctgs")
+def getCtg():
+    print(jsonify(ctgs))
+    return jsonify(ctgs)
 
 
 @app.route("/deletecookies")
