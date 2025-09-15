@@ -1,4 +1,4 @@
-let myCard = '<div class="card">'
+let myCard = '<div class="clothe__card">'
 let fatherElement = document.getElementById('clothes')
 const ctg_btnsForm = document.getElementById("ctg_btnsForm")
 
@@ -19,7 +19,7 @@ const fetchingData = async () => {
     return data
 }
 const constructBtns = (ctgs) =>{
-        
+        ctg_btnsForm.innerHTML = ""
         for (ctg of ctgs){
             ctg_btnsForm.innerHTML += `
             
@@ -50,9 +50,11 @@ const fetchingCtgButtons = async () =>{
 async function main(){
     console.log("Hi")
     fetchingCtgButtons()
-    let data =  await fetchingData()
-    console.log(data)
-    drawing(data)
+    if(fatherElement){
+        let data =  await fetchingData()
+        console.log(data)
+        drawing(data)
+    }
 }
 main()
 
@@ -75,12 +77,40 @@ const drawing = async (data) => {
         
         console.log("hi again")
         fatherElement.innerHTML += myCard
-        myCard = '<div class="card">'
+        myCard = '<div class="clothe__card">'
 
     });
 }
 
-let myOtherCard = '<div class="card--see--detail">'
+const bannerInner = document.getElementById("banner-inner");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+let currentIndex = 0;
+
+if(bannerInner){
+    const bannerItems = document.querySelectorAll(".banner--item");
+    
+    function updateBanner() {
+        const itemWidth = bannerItems[0].clientWidth;
+        bannerInner.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+    }
+    
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % bannerItems.length;
+        updateBanner();
+    });
+    
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + bannerItems.length) % bannerItems.length;
+        updateBanner();
+    });
+
+    window.addEventListener('load', updateBanner);
+    window.addEventListener('resize', updateBanner);
+}
+
+
+let myOtherCard = '<div class="clothe__card__big">'
 let otherFatherElement = document.getElementById('clothe')
 
 const fetchingOtherData = async (i) => {
@@ -99,20 +129,18 @@ async function notmain(i){
     console.log(data)
 
     myOtherCard += `
-        <div class="card--see--detail--img--space">
-            <div class="card--img">
-                <img src="${data.imgurl}"></img>
-            </div>
+        <div class="big__card__img--space">
+            <img src="${data.imgurl}"></img>
         </div>
-        <div class="card--see--detail--content">
+        <div class="big__card__right">
         <h1>${data.name}</h1>
         <p>R$ ${data.price}</p>
         <div class="buttons--space">
         <a href="/clothe/${data.id}">
-        <button class="card--button">Comprar</button>
+        <button class="card__button">Comprar</button>
         
         </a>
-        <button class="card--button">Adicionar ao carrinho</button>
+        <button class="card__button">Adicionar ao carrinho</button>
         </div>
         </div>
          `
@@ -120,12 +148,10 @@ async function notmain(i){
         
         console.log("hi again")
         otherFatherElement.innerHTML += myOtherCard
-        myOtherCard = '<div class="card">'
+        myOtherCard = '<div class="clothe__card__big">'
 
     ;}
 }
 
 
-
 notmain()
-
