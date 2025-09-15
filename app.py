@@ -39,15 +39,15 @@ class Clothe:
 
 
 clothes = [
-    Clothe(2, "Moletom Cinza", 200.00, "expensive",
+    Clothe(2, "Moletom Cinza", 200.00, "cold",
            "/static/assets/products/grey.jpeg"),
-    Clothe(1, "Nike Shoes", 320.00, "sport",
+    Clothe(1, "Nike Shoes", 320.00, "expensive",
            "/static/assets/products/green_nike_shoes.jpeg"),
-    Clothe(3, "Camisa de compressão Nike", 150.00, "sport",
+    Clothe(3, "Camisa de compressão", 150.00, "sport",
            "/static/assets/products/nike_compression_tshirt.jpeg"),
-    Clothe(4, "Calça Jogger da Puma", 75.00, "sport",
+    Clothe(4, "Calça Jogger", 75.00, "sport",
            "/static/assets/products/puma_jogger.jpeg"),
-    Clothe(5, "Camisa do Corinthians", 350.00, "cold",
+    Clothe(5, "Camisa Verde", 350.00, "expensive",
            "/static/assets/products/corinthians_tshirt.png"),
     Clothe(6, "Strap", 30.00, "sport", "/static/assets/products/strap.jpeg")
 ]
