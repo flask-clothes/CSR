@@ -1,156 +1,237 @@
-/* Reset e fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #ffffff;
-    color: #222;
-    line-height: 1.5;
+    background-color: #121212;
+    color: #f0f0f0;
 }
 
-/* Layout wrapper */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .wrapper {
-    width: 100%;
     max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: 20px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* NAV */
 .nav {
-    width: 100%;
-    padding: 15px 20px;
-    background: #f9f9f9;
+    background-color: #1a1a1a;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
-.nav h1 {
-    font-size: 1.5rem;
+.nav--left h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.nav--right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav--right a {
     font-weight: 600;
-    color: #00584d;
-    letter-spacing: 1px;
-}
-
-.nav p a {
-    font-size: 1rem;
-    text-decoration: none;
-    color: #444;
     transition: color 0.3s ease;
 }
-.nav p a:hover {
-    color: #00584d;
+
+.nav--right a:hover {
+    color: #00a82d;
 }
 
-/* Botões de categoria */
 .ctg_btns {
+    list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px 0;
 }
 
 .ctgBtn {
     padding: 8px 15px;
-    font-size: 0.9rem;
-    color: #333;
-    background-color: #f0f0f0;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #f0f0f0;
+    background-color: #272727;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .ctgBtn:hover {
-    background-color: #00584d;
+    background-color: #00a82d;
     color: #fff;
 }
 
-/* MAIN */
-main {
-    padding: 40px 0;
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background-color: #000;
 }
 
-/* Card de produto */
-.card {
-    width: 300px;
-    background-color: #ffffff;
-    border-radius: 12px;
+.hero-banner__inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.banner--item {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner--item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.banner--text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.banner--text h1 {
+    font-size: 3em;
+    font-weight: 700;
+}
+
+.banner--text p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.banner-nav__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.banner-nav__btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.banner-nav__btn--left {
+    left: 20px;
+}
+
+.banner-nav__btn--right {
+    right: 20px;
+}
+
+.main-content {
+    padding-top: 50px;
+}
+
+.clothes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.clothe__card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid #ddd;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-.card--img--space{
-    display: flex;
-    height: 220px;
-    overflow: hidden;
-    justify-content: center;
 }
 
-.card--img img {
+.clothe__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card--img--space {
     width: 100%;
-    height: 220px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.card--img--space img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-bottom: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.clothe__card:hover .card--img--space img {
+    transform: scale(1.05);
 }
 
 .card--content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding: 20px;
+    text-align: center;
 }
 
 .card--content .name {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     font-weight: 600;
 }
 .card--content .price {
-    font-size: 0.9rem;
-    color: #00584d;
-    font-weight: 500;
+    font-size: 1em;
+    font-weight: 400;
+    color: #00a82d;
+    margin-top: 5px;
 }
 
-.card button {
-    align-self: center;
-    background-color: #00584d;
+.card--button {
+    background-color: #00a82d;
     color: #fff;
-    font-weight: 600;
-    padding: 8px 15px;
-    border-radius: 6px;
+    padding: 12px 25px;
     border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
     cursor: pointer;
-    transition: background 0.3s ease;
-}
-.card button:hover {
-    background-color: #007c70;
-}
-
-/* Grid de produtos */
-.clothes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
 }
 
-/* Login */
+.card--button:hover {
+    background-color: #007a20;
+}
+
 .login {
     display: flex;
     flex-direction: column;
@@ -163,35 +244,36 @@ main {
     width: 100%;
     max-width: 400px;
     padding: 40px 30px;
-    background-color: #fafafa;
+    background-color: #1a1a1a;
     border-radius: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #333;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 #login--form h1 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #333;
+    color: #f0f0f0;
 }
 
 #login--form input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     border-radius: 6px;
-    background-color: #fff;
-    color: #333;
+    background-color: #272727;
+    color: #f0f0f0;
     outline: none;
 }
 #login--form input:focus {
-    border-color: #00584d;
+    border-color: #00a82d;
 }
 
 #login--form button {
-    background-color: #00584d;
+    background-color: #00a82d;
     color: #fff;
     font-weight: 600;
     border: none;
@@ -201,23 +283,27 @@ main {
     transition: background 0.3s ease;
 }
 #login--form button:hover {
-    background-color: #007c70;
+    background-color: #007a20;
 }
 
-/* Página 403 */
 .fourZeroThree {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 80px 20px;
     gap: 20px;
+    text-align: center;
 }
 .fourZeroThree a {
-    color: #00584d;
+    color: #00a82d;
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
-/* Container do detalhe */
+.fourZeroThree a:hover {
+    color: #fff;
+}
+
 .clothe {
     display: flex;
     justify-content: center;
@@ -225,63 +311,55 @@ main {
     padding: 40px 20px;
 }
 
-/* Card de detalhe */
-.card--see--detail {
+.clothe__card__big {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 20px;
+    gap: 40px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 30px;
     max-width: 900px;
     width: 100%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
-}
-.card--see--detail:hover {
-    transform: translateY(-3px);
 }
 
-/* Imagem */
-.card--see--detail--img--space {
+.big__card__img--space {
     flex: 1 1 45%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.card--see--detail--img--space img {
+
+.big__card__img--space img {
     width: 100%;
     max-width: 400px;
     border-radius: 10px;
     object-fit: cover;
-    border: 1px solid #eee;
+    border: 1px solid #272727;
 }
 
-/* Conteúdo */
-.card--see--detail--content {
+.big__card__right {
     flex: 1 1 45%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    text-align: center;
+    text-align: left;
     padding: 10px;
 }
 
-.card--see--detail--content h1 {
-    font-size: 1.8rem;
-    color: #222;
+.big__card__right h1 {
+    font-size: 2.5em;
+    color: #f0f0f0;
+    font-weight: 700;
+}
+
+.big__card__right p {
+    font-size: 1.5em;
+    color: #00a82d;
     font-weight: 600;
 }
 
-.card--see--detail--content p {
-    font-size: 1.2rem;
-    color: #00584d;
-    font-weight: 500;
-}
-
-/* Botões */
 .buttons--space {
     display: flex;
     flex-direction: column;
@@ -289,11 +367,10 @@ main {
     margin-top: 20px;
 }
 
-.card--button {
+.card__button {
     width: 100%;
     max-width: 250px;
-    margin: 0 auto;
-    background-color: #00584d;
+    background-color: #00a82d;
     color: #fff;
     font-weight: 600;
     padding: 12px;
@@ -301,10 +378,56 @@ main {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin: 0;
 }
-.card--button:hover {
-    background-color: #007c70;
+.card__button:hover {
+    background-color: #007a20;
 }
-.card--button:active {
+.card__button:active {
     transform: scale(0.97);
+}
+
+
+.footer {
+    background-color: #1a1a1a;
+    padding: 50px 0 20px;
+    margin-top: 50px;
+}
+
+.footer__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+}
+
+.footer__section h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #00a82d;
+}
+
+.footer__section ul {
+    list-style: none;
+}
+
+.footer__section li {
+    margin-bottom: 10px;
+}
+
+.footer__section a {
+    transition: color 0.3s ease;
+}
+
+.footer__section a:hover {
+    color: #f0f0f0;
+}
+
+.footer__bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.9em;
+    color: #888;
 }
