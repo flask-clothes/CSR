@@ -1,249 +1,310 @@
-*{
+/* Reset e fonte */
+* {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif ;
-}
-
-body{
-
-    background-color: #0e0e0e;
-    color: white;
+    padding: 0;
     box-sizing: border-box;
-
+    font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-.wrapper{
+body {
+    background-color: #ffffff;
+    color: #222;
+    line-height: 1.5;
+}
+
+/* Layout wrapper */
+.wrapper {
     width: 100%;
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
+    padding-inline: 20px;
 }
 
-main{
-    padding: 40px 25px;
-}
-
-.card{
-    transition: all 100ms ease;
-    width: 350px;
-   
-    
-    background-color: #272727;
-    border-radius: 10px;
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    
-}
-
-.card button{
-    justify-self: center;
-    display: flex;
-    width: 100px;
-    background-color: #a1a172;
-    color: white;
-    padding: 8px 7px;
-    border-radius: 5px;
-    border: 1px solid white;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-}
-.card a{
-    text-decoration: none;
-}
-.card:hover{
-    transform: scale(1.05);
-    box-shadow: -10px 0 100px #fffd94,10px 0 100px #ebf195;
-}
-
-.clothes{
-    display: flex;
-    gap: 50px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card--see--detail{
+/* NAV */
+.nav {
     width: 100%;
-    transition: all 100ms ease;
-    display: flex;
-    padding: 5px;
-    background-color: #272727;
-    border-radius: 10px;
-    display: flex;
-    gap: 10px;
-    
-    padding: 10px;
-}
-
-.card--see--detail--content{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 5px;
-}
-
-.card--see--detail--content h1{
-    font-family: Arial;
-    font-size: 30px;
-}
-.card--see--detail--content button{
-  
-    width: 180px;
-    background-color: #a1a172;
-    color: white;
-    padding: 15px 10px;
-    border-radius: 5px;
-    border: 1px solid white;
-    
-    
-}
-
-.card--img--space{
-    width: 100%;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    overflow: hidden;
-}
-.card--img--space img{
-    width: 100%;
-}
-.card--content{
-    padding: 5px 5px 15px 15px;
-    display: flex;
-    gap: 20px;
-    flex-direction: column;
-    justify-content: start;
-    
-}
-
-.card--see--detail--img--space{
-    width: 50%;
-    padding: 10px;
-}
-
-.card--see--detail--img{
-    width: 100%;
-    object-fit: cover;
-}
-
-.block{
-    width: 100%;
-    height: 400px;
-    background-color: white;
-}
-
-.card--img{
-    width: 100%;
-    border-radius: 20px;
-}
-.card--img img{
-    width: 100%;
-    border-radius: 20px;
-}
-
-nav a{
-    text-decoration: none;
-    color: #FFFFFF;
-    
-}
-.nav{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 15px 10px;
+    padding: 15px 20px;
+    background: #f9f9f9;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.nav p{
-    font-size: 20px;
-}
-.nav h1{
-    font-size: 25px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.name{
+.nav h1 {
+    font-size: 1.5rem;
     font-weight: 600;
+    color: #00584d;
+    letter-spacing: 1px;
 }
-.price{
-    font-size: 14px;
+
+.nav p a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #444;
+    transition: color 0.3s ease;
+}
+.nav p a:hover {
     color: #00584d;
 }
 
-.login{
+/* Botões de categoria */
+.ctg_btns {
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding-top: 70px;
-}
-#login--form{
-    padding: 80px 100px;
-    box-sizing: border-box;
-    background-color: #272727;
-    gap: 80px;
-    justify-content: center;
-    border-radius: 10px;
-    display: flex;
-    width: 600px;
-    flex-direction: column;
-    align-items: center;
-}
-#login--form h1{
-    text-align: center;
-}
-#login--form button{
-    font-family: Arial, Helvetica, sans-serif;
-    width: 100px;
-    height: 40px;
-    background-color: #272727;
-    color: white;
-    border-radius: 10px;
+    padding: 20px 0;
 }
 
-#login--form input{
+.ctgBtn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #333;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.ctgBtn:hover {
+    background-color: #00584d;
+    color: #fff;
+}
+
+/* MAIN */
+main {
+    padding: 40px 0;
+}
+
+/* Card de produto */
+.card {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.card--img--space{
+    display: flex;
+    height: 220px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.card--img img {
     width: 100%;
-    height: 30px;
-    border: 1px solid #e4e4e4;
-    border-radius: 10px;
-    outline: none;
-    padding: 3px 10px;
-    box-sizing: border-box;
-
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
 }
-.fourZeroThree{
+
+.card--content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card--content .name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.card--content .price {
+    font-size: 0.9rem;
+    color: #00584d;
+    font-weight: 500;
+}
+
+.card button {
+    align-self: center;
+    background-color: #00584d;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.card button:hover {
+    background-color: #007c70;
+}
+
+/* Grid de produtos */
+.clothes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Login */
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+    gap: 20px;
+}
+
+#login--form {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    background-color: #fafafa;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#login--form h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#login--form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+}
+#login--form input:focus {
+    border-color: #00584d;
+}
+
+#login--form button {
+    background-color: #00584d;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+#login--form button:hover {
+    background-color: #007c70;
+}
+
+/* Página 403 */
+.fourZeroThree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px;
+    gap: 20px;
+}
+.fourZeroThree a {
+    color: #00584d;
+    text-decoration: none;
+    font-weight: 600;
+}
+/* Container do detalhe */
+.clothe {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 40px 20px;
+}
+
+/* Card de detalhe */
+.card--see--detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+.card--see--detail:hover {
+    transform: translateY(-3px);
+}
+
+/* Imagem */
+.card--see--detail--img--space {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card--see--detail--img--space img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+/* Conteúdo */
+.card--see--detail--content {
+    flex: 1 1 45%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 20px;
-}
-.fourZeroThree a{
-    text-decoration: none;
-    color: white;
-}
-.ctg_btns{
-    display: flex;
-    gap: 10px;
-    padding-block: 35px;
+    text-align: center;
+    padding: 10px;
 }
 
-.ctgBtn{
-    padding: 3px 10px;
-    color: #e4e4e4;
-    outline: none;
-    background-color: #272727;
-    border-radius: 10px;
-    width: 100px;
-    box-sizing: border-box;
-    height: 30px;
+.card--see--detail--content h1 {
+    font-size: 1.8rem;
+    color: #222;
+    font-weight: 600;
 }
-.buttons--space{
+
+.card--see--detail--content p {
+    font-size: 1.2rem;
+    color: #00584d;
+    font-weight: 500;
+}
+
+/* Botões */
+.buttons--space {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.card--button {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    background-color: #00584d;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.card--button:hover {
+    background-color: #007c70;
+}
+.card--button:active {
+    transform: scale(0.97);
 }
