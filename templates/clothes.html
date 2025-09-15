@@ -1,11 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="wrapper">
-
-<div class="clothes" id="clothes">
-
+<div class="hero-banner">
+    <div class="hero-banner__inner" id="banner-inner">
+        <div class="banner--item">
+            <img src="/static/assets/products/banner1.png" alt="Tênis da Nike Verde">
+            <div class="banner--text">
+                <h1>Flask Revolution</h1>
+                <p>O futuro do esporte está aqui.</p>
+            </div>
+        </div>
+        <div class="banner--item">
+            <img src="/static/assets/products/grey.jpeg" alt="Moletom Cinza">
+            <div class="banner--text">
+                <h1>Estilo para o Dia a Dia</h1>
+                <p>Conforto e elegância em um só lugar.</p>
+            </div>
+        </div>
+        <div class="banner--item">
+            <img src="/static/assets/products/puma_jogger.jpeg" alt="Calça Jogger Puma">
+            <div class="banner--text">
+                <h1>Calças Jogger</h1>
+                <p>Liberdade para se movimentar.</p>
+            </div>
+        </div>
+    </div>
+    <button class="banner-nav__btn banner-nav__btn--left" id="prev-btn">&lt;</button>
+    <button class="banner-nav__btn banner-nav__btn--right" id="next-btn">&gt;</button>
 </div>
+
+<div class="wrapper">
+    <h1 class="clothes--title">Roupas e Acessórios</h1>
+    <div class="clothes" id="clothes">
+
+    </div>
 </div>
 
 {% endblock %}
